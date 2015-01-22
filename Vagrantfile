@@ -5,7 +5,7 @@ VAGRANTFILE_API_VERSION = "2"
 #--------------------------------------------------
 # User to modify this value according to needs.
 # This one is relative to user's home.
-OSTF_DIR="~/Documents/ostf-fuel"
+OSTF_DIR="~/Documents/fuel-ostf"
 #--------------------------------------------------
 
 vagrant_user = %x(id -un).strip
@@ -13,7 +13,7 @@ vagrant_uid = %x(id -u #{vagrant_user}).strip
 
 nodes = {
   "ostf-dev" => {
-    "ip" => "192.168.1.100",
+    "ip" => "192.168.100.100",
     "vm" => {
       "memory" => 4096,
       "cpus" => 2
@@ -23,6 +23,7 @@ nodes = {
 
 vbox_optimization_opts = ["ioapic", "hwvirtex", "vtxvpid", "vtxux"]
 
+Vagrant.require_version ">=1.6.0"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "ubuntu/precise64"

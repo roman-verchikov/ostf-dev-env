@@ -12,7 +12,7 @@ Sets up OSTF development environment:
 
 ## Prerequisites
  - Virtualbox
- - Vagrant
+ - Vagrant >=1.6.0
  - NFS server
 
 ## Recommendation
@@ -34,9 +34,19 @@ Sets up OSTF development environment:
     $ vagrant ssh ostf-dev
     ```
  6. OSTF code by default is available in `~/Documents/ostf-fuel`
+ 7. You can start OSTF server with:
+
+    ```
+    host $ vagrant ssh ostf-dev
+    guest $ cd ~/Documents/fuel-ostf
+    guest $ source ubuntu-venv/bin/activate
+    guest $ ostf-server --debug --config-file ./etc/ostf/ostf.conf
+    ```
 
 ## Known issues
  - This was only tested on OS X 10.9 so far.
  - Windows is **not** supported due to NFS dependency.
  - There might be issues with OSX filesystem (AFS) due to it's case
    insensitivity.
+ - Other people may find fabric scripts more convenient for setting up dev
+   enviroment
