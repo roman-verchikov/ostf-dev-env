@@ -20,27 +20,37 @@ Sets up OSTF development environment:
 
 ## Usage
  1. Make sure your system has all the prerequisites installed
- 2. Set `OSTF_DIR` in Vagrantfile to a path where you want your OSTF sources
- 3. Boot VM out of the work dir:
+ 2. Clone this repo:
 
+    ```bash
+    git clone https://github.com/roman-verchikov/ostf-dev-env.git
     ```
-    $ cd ~/Documents/ostf-dev-env
-    $ vagrant up ostf-dev
+ 3. Set `OSTF_DIR` in Vagrantfile to a path where you want your OSTF sources
+
+    ```bash
+    cd ostf-dev-env
+    sed -i 's?^OSTF_DIR=.*?OSTF_DIR=~/Documents/fuel-ostf?' Vagrantfile
+    ```
+ 4. Start OSTF dev VM
+
+    ```bash
+    cd ostf-dev-env
+    vagrant up ostf-dev
     ```
  4. Type your password when asked (this is needed for NFS export)
  5. If all goes well you will be able to SSH into the VM:
 
+    ```bash
+    vagrant ssh ostf-dev
     ```
-    $ vagrant ssh ostf-dev
-    ```
- 6. OSTF code by default is available in `~/Documents/ostf-fuel`
+ 6. OSTF code by default is available in `~/Documents/fuel-ostf`
  7. You can start OSTF server with:
 
-    ```
-    host $ vagrant ssh ostf-dev
-    guest $ cd ~/Documents/fuel-ostf
-    guest $ source ubuntu-venv/bin/activate
-    guest $ ostf-server --debug --config-file ./etc/ostf/ostf.conf
+    ```bash
+    vagrant ssh ostf-dev
+    cd ~/Documents/fuel-ostf
+    source ubuntu-venv/bin/activate
+    ostf-server --debug --config-file ./etc/ostf/ostf.conf
     ```
 
 ## Known issues
