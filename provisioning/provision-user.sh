@@ -20,7 +20,7 @@ done
 
 if ! id -u $NEW_USER &>/dev/null; then
     echo "Creating user $NEW_USER"
-    useradd --groups admin --shell /bin/bash --uid $NEW_USER_UID $NEW_USER
+    useradd --groups admin --shell /bin/bash --non-unique --uid $NEW_USER_UID $NEW_USER
 fi
 
 NEW_USER_HOMEDIR=$(sudo -H -u $NEW_USER -s eval 'echo $HOME')
